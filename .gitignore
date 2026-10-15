@@ -1,0 +1,23 @@
+# Python virtual environment and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Environment files with sensitive credentials
+.env
+
+# SQLite local database
+backend/data/*.db
+*.db
+
+# Uploaded image files
+uploads/*
+!uploads/.gitkeep
+
+# IDE and testing caches
+.pytest_cache/
+.vscode/
+.idea/

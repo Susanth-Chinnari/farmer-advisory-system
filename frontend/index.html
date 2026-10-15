@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisan Mitra AI - Farmer Query Support & Advisory System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <div class="brand-icon">🌾</div>
+      <div>
+        <h1 class="brand-title">Kisan Mitra AI</h1>
+        <p class="brand-tagline">AI-Based Farmer Query Support & Crop Health Advisory</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="user-badge" id="user-badge">
+        <span>👨‍🌾</span>
+        <span id="user-full-name">Farmer</span>
+      </div>
+      <button class="btn-logout" id="btn-logout">Logout</button>
+    </div>
+  </header>
+
+  <!-- Ethical & Agricultural Safety Disclaimer Banner -->
+  <div class="disclaimer-banner" id="disclaimer-banner">
+    <div class="disclaimer-text">
+      ⚠️ <strong>Advisory Notice:</strong> Recommendations are AI-generated for informational guidance. Soil, climate, and crop varieties differ regionally. Please verify fertilizer and pesticide dosages with your local Krishi Vigyan Kendra (KVK) or Agriculture Officer before field application.
+    </div>
+    <button class="disclaimer-dismiss" id="disclaimer-dismiss" title="Dismiss notice">✕</button>
+  </div>
+
+  <!-- App Body Layout -->
+  <div class="app-container">
+
+    <!-- Left Sidebar: Conversations & Quick Prompts -->
+    <aside class="sidebar">
+      <button class="btn-new-chat" id="btn-new-chat">
+        <span>➕</span> New Consultation
+      </button>
+
+      <div class="sidebar-heading">Past Consultations</div>
+      <ul class="conversation-list" id="conversation-list">
+        <!-- Populated dynamically by app.js -->
+      </ul>
+
+      <!-- Common Quick Questions for Farmers -->
+      <div class="quick-prompts-card">
+        <div class="sidebar-heading" style="margin-bottom: 6px;">💡 Quick Questions</div>
+        <button class="quick-prompt-btn" data-prompt="Why are my tomato leaves turning yellow and curling?">
+          🍅 Tomato leaves yellowing & curling
+        </button>
+        <button class="quick-prompt-btn" data-prompt="What fertilizer should I apply for wheat in current weather?">
+          🌾 Fertilizer guidance for wheat
+        </button>
+        <button class="quick-prompt-btn" data-prompt="Is it safe to spray pesticide considering today's rain probability?">
+          🌧️ Weather-based spray safety
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Consultation Workspace -->
+    <main class="main-content">
+
+      <!-- Dynamic Weather & Farming Advisory Bar -->
+      <section class="weather-card" id="weather-bar">
+        <div class="weather-stats">
+          <span>📍 <strong id="weather-city">Delhi,IN</strong></span>
+          <span>🌡️ <strong id="weather-temp">--°C</strong></span>
+          <span>☁️ <span id="weather-cond">Loading...</span></span>
+          <span>💧 Humidity: <strong id="weather-humid">--%</strong></span>
+          <span>💨 Wind: <strong id="weather-wind">-- km/h</strong></span>
+          <span class="weather-badge badge-simulated" id="weather-badge">Checking...</span>
+        </div>
+        <div class="weather-advisory-text" id="weather-advisory">
+          Fetching regional agricultural weather advisory...
+        </div>
+      </section>
+
+      <!-- Chat Messages Container -->
+      <section class="chat-window" id="chat-window">
+        <div class="empty-chat-welcome" id="empty-welcome">
+          <div style="font-size: 40px; margin-bottom: 12px;">🌱</div>
+          <h3>Namaste! How can I support your farm today?</h3>
+          <p>
+            Ask questions about crop diseases, pest controls, fertilizers, or irrigation schedules.
+            You can type in English or Hinglish, speak using your microphone, or upload a photo of your crop.
+          </p>
+        </div>
+      </section>
+
+      <!-- Chat Input Footer -->
+      <footer class="chat-footer">
+
+        <!-- Voice Status Indicator -->
+        <div class="voice-status-pill" id="voice-status">
+          <span>🔴 Listening to your voice... Speak now</span>
+        </div>
+
+        <!-- Staged Image Attachment Preview -->
+        <div class="attachment-staging" id="attachment-staging" style="display: none;">
+          <img id="staging-thumb" class="staging-thumb" alt="Preview">
+          <span class="staging-label" id="staging-name">photo.jpg</span>
+          <button class="btn-remove-attachment" id="btn-remove-staged" title="Remove attachment">✕</button>
+        </div>
+
+        <div class="input-row">
+          <!-- Hidden File Input -->
+          <input type="file" id="image-input" accept="image/png, image/jpeg, image/webp" style="display: none;">
+
+          <!-- Image Attachment Button -->
+          <button class="action-btn" id="btn-attach-image" title="Upload plant or leaf photo">
+            📷
+          </button>
+
+          <!-- Voice Microphone Button -->
+          <button class="action-btn btn-mic" id="btn-mic" title="Voice Input (Speech-to-Text)">
+            🎤
+          </button>
+
+          <!-- Text Input -->
+          <textarea
+            class="chat-textarea"
+            id="query-input"
+            rows="1"
+            placeholder="Type your farming question, or click 📷 to upload a leaf photo, or 🎤 to speak..."
+          ></textarea>
+
+          <!-- Submit Button -->
+          <button class="action-btn btn-send" id="btn-send" title="Send question">
+            ➤
+          </button>
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/auth.js"></script>
+  <script src="/js/voice.js"></script>
+  <script src="/js/weather.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
